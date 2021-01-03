@@ -234,4 +234,5 @@
 // Must define WIFISUPPORT in Configuration.h for the printer.
 //
 #define ESP_WIFI_MODULE_COM                    2
-#define ESP_WIFI_MODULE_BAUDRATEÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+#define ESP_WIFI_MODULE_BAUDRATE          115200
+#define ESP_WIFI_MODULE_RESET_PIN           -1

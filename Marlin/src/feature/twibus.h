@@ -230,5 +230,11 @@ class TWIBus {
       static void debug(const char func[], uint32_t adr);
       static void debug(const char func[], char c);
       static void debug(const char func[], char adr[]);
-      static inline void debug(const cÆßØû0>˜ı¥¦–ûb{mh,Êvé{¬^»áØoî“çØŠ›Y·Áâ¬Ê³æ×<)ÿ;‹•_€cõ<‡²Ş³¸pŞi¬,-²»GÈù^õ…_±Ïh[¸N¦ñöşÎ7²<^ü\XÅp,ñu)¶øñ}Á[Ğç¿¶mÀÕjùöé“õÉ=²×m›{+ñE–^¶kÇ5ƒkÒ÷!¸ı'¾¡ÆîÚãØZäÄ1Á¾AÇb.lf||P=„J^?ú±²×[†µ¹Ju»mO_$w—§mT|wê ùªÕ°X¿9X¼Î™×Õ¸5\T>%Ô|HÛ4'ª¯¯fõñ*V‡'
-=Íì_Eat´!ßè>ÉYXşG>åòãìõó¾‡Px?Eï3r	K³c
+      static inline void debug(const char func[], uint8_t v) { debug(func, (uint32_t)v); }
+    #else
+      static inline void debug(const char[], uint32_t) {}
+      static inline void debug(const char[], char) {}
+      static inline void debug(const char[], char[]) {}
+      static inline void debug(const char[], uint8_t) {}
+    #endif
+};

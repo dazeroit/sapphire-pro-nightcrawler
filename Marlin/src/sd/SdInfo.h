@@ -247,6 +247,19 @@ typedef struct CSDV2 {
   /** Do not use always 0 */
   unsigned char file_format : 2;
   unsigned char tmp_write_protect : 1;
-  unsigned ch‹²·™pìªBSO^xG¡!›¯#1ìøêñp<	9”ğ>l’×<ÈYVWåk	3¬¤wz>=?tük¹ãºPGº{¶77Ğ›ïùY«Ğ¢î"ÃıãÅVo[}¿½jmˆUæøÒŸ¿¿æ·ŸFoŞºœîÒS-ÇGiÏ*¸t
-¯¹àuH$ÔB~Ë?ÉûX]OES±=Cå["¶jHÕç£wÔš¤˜ã$…¤ÏñæéŞôšÖØĞj+
-ô5%wGxòi‘«­ÙYË˜–™©”Å|ˆ_'‹xÔV~1)|oeÏâÅ¸4`ÑŸä‚¾®vŒÿâíBQ!ˆÜ˜êÒ¨ó ï‡ú4ú€Àéìà®}û&K­ ßµæó‡ƒ/k€Îóõ3µè…İ­Ô’\Ô“Ûm….îv×¾~ØÓşîYÿÀç×Cû
+  unsigned char perm_write_protect : 1;
+  unsigned char copy : 1;
+  /** Do not use always 0 */
+  unsigned char file_format_grp : 1;
+  // byte 15
+  /** not used always 1 */
+  unsigned char always1 : 1;
+  /** checksum */
+  unsigned char crc : 7;
+} csd2_t;
+
+/** union of old and new style CSD register */
+union csd_t {
+  csd1_t v1;
+  csd2_t v2;
+};

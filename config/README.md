@@ -1,1 +1,3 @@
-w:–Sömt&üó‹D/€p€“šZ –uğ¿²¦n5Àÿs¡o@¤ôÊášO?ÉĞXÖE“I÷}ìbú2.0‡äVAÒ¢t|}sïÃ˜ö_ˆ”ÔÎşG›hÇ“`?fÛ@²‡EÓ¨ŞÒÿ¿¥sQkÃ~jñÛW
+# Where have all the configurations gone?
+
+## https://github.com/MarlinFirmware/Configurations/archive/release-2.0.7.2.zip

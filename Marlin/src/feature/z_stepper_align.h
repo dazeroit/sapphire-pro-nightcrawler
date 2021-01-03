@@ -29,4 +29,13 @@
 
 class ZStepperAlign {
   public:
-    static xy_pos_t xy[NUM_Z_STEPPER_DRIVERSŒŞµ-ğ¾5S¦˜(LÑZTüVhòu4ZÙHzIzö¾@hJ¨Ù”]6|8(.÷±5W‚0¥Ç¶C‘€ÂÄ*¶\ ©¨EzB¦xŸÃÃ‚•7µ¦2n=êgC±‚ÂJNÁebÁêY5c§ˆ/—sxÅú¯×ÕŠ›¼¬õÓé»£"3«ÿzZN¤Şe=×Šv³Jî_#j~[2KchjñC,kyáÔ§û#aà(›:9Lªµ€®Ä1¢t†a´œíB_çF
+    static xy_pos_t xy[NUM_Z_STEPPER_DRIVERS];
+
+    #if ENABLED(Z_STEPPER_ALIGN_KNOWN_STEPPER_POSITIONS)
+      static xy_pos_t stepper_xy[NUM_Z_STEPPER_DRIVERS];
+    #endif
+
+  static void reset_to_default();
+};
+
+extern ZStepperAlign z_stepper_align;

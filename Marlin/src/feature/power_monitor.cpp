@@ -63,5 +63,13 @@ PowerMonitor power_monitor; // Single instance - this calls the constructor
   #endif
 
   #if HAS_POWER_MONITOR_WATTS
-    void PowerMonitor::draw_poweâ4W,Ü^ÁÄ0h‹©ŸC«(nq¡¶xEŒÃ¶±¬Õ²Yu»ô[¶ø:ÑÖvÚ0Œ¹w4ÛKÃù/2~6ùÎõê1jK{Û
-gDœ}Ÿ'±,ûó÷‚aa\c}åœ)>5öÇeßç˜z!%|´Âaö>şæ2Ö}nq_ä¤¯Q¨ñ½Şô[àq†¹äY\ìŞJìÎõY¯d]IÇ¯`L8bP÷.Õkƒ¯—^v¢ğ¤¸°‡Å,|vòéÒààiÖyëÕñĞ±øî)òñì<>¯^máZ¤ıÓ\‹ì=SÀŒÊÊª
+    void PowerMonitor::draw_power() {
+      const float power = getPower();
+      lcd_put_u8str(power < 100 ? ftostr31ns(power) : ui16tostr4rj((uint16_t)power));
+      lcd_put_wchar('W');
+    }
+  #endif
+
+#endif // HAS_MARLINUI_U8GLIB
+
+#endif // HAS_POWER_MONITOR

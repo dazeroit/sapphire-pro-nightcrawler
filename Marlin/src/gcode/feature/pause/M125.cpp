@@ -35,11 +35,6 @@
   #include "../../../lcd/ultralcd.h"
 #endif
 
-//modded by dazero.it
-#if HAS_TFT_LVGL_UI
-  #include "../../../lcd/extui/lib/mks_ui/draw_pause_message.h"
-#endif
-
 #if ENABLED(POWER_LOSS_RECOVERY)
   #include "../../../feature/powerloss.h"
 #endif
@@ -79,8 +74,6 @@ void GcodeSuite::M125() {
   const bool sd_printing = TERN0(SDSUPPORT, IS_SD_PRINTING());
 
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_PARKING, PAUSE_MODE_PAUSE_PRINT));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_PARKING));
 
   const bool show_lcd = TERN0(HAS_LCD_MENU, parser.seenval('P'));
 

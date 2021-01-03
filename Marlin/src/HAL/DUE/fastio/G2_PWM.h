@@ -71,4 +71,8 @@ extern uint32_t motor_current_setting[3];
                               // 0: 25MHz, 1: 100MHz, 2: 50MHz, 3: 12.5MHZ to PWM1 prescaler
 #define MR0_MARGIN 200        // if channel value too close to MR0 the system locks up
 
-extern bool PWM_table_swap;   // flag to tell the ISR thaÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+extern bool PWM_table_swap;   // flag to tell the ISR that the tables have been swapped
+
+#define HAL_G2_PWM_ISR  void PWM_Handler()
+
+extern volatile uint32_t PWM_ISR1_STATUS, PWM_ISR2_STATUS;

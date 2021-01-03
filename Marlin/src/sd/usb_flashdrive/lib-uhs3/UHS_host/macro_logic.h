@@ -144,4 +144,9 @@ AJK_IIF(AJK_BITAND(AJK_IS_COMPARABLE(x))(AJK_IS_COMPARABLE(y)) ) \
 #define ZERO_TIMES_TEST 0
 #define THREE_TIMES_TEST 3
 blank > AJK_MAKE_LIST(VARIABLE_, ZERO_TIMES_TEST) < because zero repeats
-Make 3 comma separated indexed variables : AJK_MAKE_LIST(VARIABLE_, THREE_TIÿÿÿ÷ÿÿÿýÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ÷ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿÿÿÿÿïÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ÷ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿó
+Make 3 comma separated indexed variables : AJK_MAKE_LIST(VARIABLE_, THREE_TIMES_TEST)
+Make 3 bogus function bodies
+AJK_MAKE_FUNS(unsigned Cfunc,(arg1, arg2),3,BODY)
+#endif
+
+#endif  /* MACRO_LOGIC_H */

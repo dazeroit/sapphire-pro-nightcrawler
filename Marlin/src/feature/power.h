@@ -31,4 +31,10 @@ class Power {
   public:
     static void check();
     static void power_on();
-    æ“JMŠÅÇ7ÇËÂB­L'pŸÅõË“”Zú>’¾ÿøÖ,¿ƒn<ŽlK[¿y8Ö¾kp€Òg•¶¸í¸ïD×áŽÒ<¶‘×<n«vÜéM4iy¢ÐÏJ<¾B’ó×ëÏ=üãoGFÿñû³í$/dç´YÜß÷VÈ‰TÔoŸ=“àÔ?
+    static void power_off();
+  private:
+    static millis_t lastPowerOn;
+    static bool is_power_needed();
+};
+
+extern Power powerManager;

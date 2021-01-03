@@ -37,11 +37,6 @@
   #include "../../../lcd/ultralcd.h"
 #endif
 
-//modded by dazero.it
-#if HAS_TFT_LVGL_UI
-  #include "../../../lcd/extui/lib/mks_ui/draw_pause_message.h"
-#endif
-
 #if ENABLED(MMU2_MENUS)
   #include "../../../lcd/menu/menu_mmu2.h"
 #endif
@@ -103,9 +98,6 @@ void GcodeSuite::M600() {
   // Show initial "wait for start" message
   #if HAS_LCD_MENU && DISABLED(MMU2_MENUS)
     lcd_pause_show_message(PAUSE_MESSAGE_CHANGING, PAUSE_MODE_PAUSE_PRINT, target_extruder);
-  //modded by dazero.it
-  #elif HAS_TFT_LVGL_UI
-    lv_draw_pause_message(PAUSE_MESSAGE_CHANGING);
   #endif
 
   #if ENABLED(HOME_BEFORE_FILAMENT_CHANGE)

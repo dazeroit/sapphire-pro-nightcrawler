@@ -53,7 +53,7 @@
 
 #define WIFI_ENABLE_TIPS                            20
 
-#define DIALOG_PAUSE_MESSAGE_PARKING                21 //modded by dazero.it
+#define DIALOG_PAUSE_MESSAGE_PAUSING                21
 #define DIALOG_PAUSE_MESSAGE_CHANGING               22
 #define DIALOG_PAUSE_MESSAGE_UNLOAD                 23
 #define DIALOG_PAUSE_MESSAGE_WAITING                24

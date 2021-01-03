@@ -34,9 +34,8 @@
 #include "../../../../feature/pause.h"
 
 void lv_draw_pause_message(const PauseMessage msg) {
-  SERIAL_ECHO_MSG("into lv draw pause message");
   switch (msg) {
-    case PAUSE_MESSAGE_PARKING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_PARKING); break; //modded by dazero.it
+    case PAUSE_MESSAGE_PAUSING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_PAUSING); break;
     case PAUSE_MESSAGE_CHANGING: clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_CHANGING); break;
     case PAUSE_MESSAGE_UNLOAD:   clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_UNLOAD); break;
     case PAUSE_MESSAGE_WAITING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_WAITING); break;

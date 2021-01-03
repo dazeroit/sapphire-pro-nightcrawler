@@ -97,5 +97,10 @@
 #define USE_CXA_PURE_VIRTUAL 1
 
 /**
- * Defin·£0G¬§¤@²¯ºR¦¿²D®¿¢Xë‰ôWË‘ŸË+åÚ*ÊåZËËd™ëj2%ûª²$;ªv³Þ=ï;þ|½1ý»×#7§úS©hmŒõ¶âðÒL¦1â>ôõJC|þØ(œ}>š†~ø1¿«œ
-˜Éˆ)¹..LÖ;^?5Z5Ã«3æ5ÉËËôÙÅÅ6æ$Ž°øèîûmÓJîÿlœ÷‹‡Ü÷[Æ}$£ó§.AÉiúA Œ…>0”ßÍÖ#´á.7|/øûˆ	ïññÞÇ²1R«Ô_'Ä|˜»BZL$dAIJ
+ * Defines for 8.3 and long (vfat) filenames
+ */
+
+#define FILENAME_LENGTH 13 // Number of UTF-16 characters per entry
+
+// Total bytes needed to store a single long filename
+#define LONG_FILENAME_LENGTH (FILENAME_LENGTH * MAX_VFAT_ENTRIES + 1)

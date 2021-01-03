@@ -112,7 +112,14 @@ const char* ftostr51rj(const float &x);
 #include "../core/macros.h"
 
 // Convert float to rj string with 123 or -12 format
-FORCE_INLINE const char* ftostr3(const float &x) { return i16tostr3rj(int16_t(x + (x < 0 ? 8;÷MKŠæ0N£o™
-PãM ãk+Yğ\§>©aã:mH£†¤;(K_ÏÁØĞÖ¶8Å­mñJ{úÒ´NìÎ5ßNlÉh cÌuÏ1Ÿ9K¨Áˆ13ZQè4jbÜìÙ}áCo®õoÅõGBÏ²—ûê~íH»|¬)u‘o¯X»·¿È`ß_>j t–ÇIcE>`QÒ¤G¸CF¤ÑñGß1op³5„O;jŒhJ4ˆ¾¿…±ñÿ²4R;3mp±Ó#ÍNæ¤Fø›Ad Äo¶!X© ÁÊ37rêr7qÑ7¥­&TÑ[%ƒòx#Íq
-Ñr¨/ÕOá³¡ÆyÔôíoÈ•Gí%Ä`Cqd.Ÿ7¥ğëòƒ¹U(Iõ†üx
-ÿ9Cl…	×P°w#Dp¹‚¿‹m¸Ù˜ÃZCj¼§Kï*0Y­«”©q°jèi)Qé¬‰‰rXçWøH³.]Æ¿ŒñÍ ÏÑ«Nö•W3³¤ª‰±€Ä‘­)¼hi&k­•ÀÃE6m0€˜`KH[K·£”¤­‡â,?n-ãˆcír»ZãToOY}r
+FORCE_INLINE const char* ftostr3(const float &x) { return i16tostr3rj(int16_t(x + (x < 0 ? -0.5f : 0.5f))); }
+
+#include "../inc/MarlinConfigPre.h"
+
+#if ENABLED(LCD_DECIMAL_SMALL_XY)
+  // Convert float to rj string with 1234, _123, 12.3, _1.2, -123, _-12, or -1.2 format
+  const char* ftostr4sign(const float &fx);
+#else
+  // Convert float to rj string with 1234, _123, -123, __12, _-12, ___1, or __-1 format
+  FORCE_INLINE const char* ftostr4sign(const float &x) { return i16tostr4signrj(int16_t(x + (x < 0 ? -0.5f : 0.5f))); }
+#endif

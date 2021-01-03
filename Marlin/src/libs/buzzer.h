@@ -84,9 +84,9 @@
 
     public:
       /**
-       * @brief Class constructor
+       * @brief Init Buzzer
        */
-      Buzzer() {
+      static inline void init() {
         SET_OUTPUT(BEEPER_PIN);
         reset();
       }
@@ -110,5 +110,19 @@
   };
 
   // Provide a buzzer instance
-  extern Buzzer buzz$>ZhŞS-t Í%”“ËéVÉT:ŞÓƒÀX·×ÄC?áW-ÚøSõ¤QR¤I?âDÜ ş{­_æVÀµJ’{şö.ú©XM"©¦ãb7.lö{R±€G­ƒ÷eÏ½¤"@÷€Büÿá‰ÎÈF$¶Šßô
-F ‡«î]mJ„ı_é¨Y~ö`îã‘‚{k£2¢¢8„H­Ü®Ü‹½¾ÔÈı(Éü|ƒtä¡Çœ{ âğBå˜=·º¯”s LóÆı&¬æ…¼	Öâ·T=JåWt¼zD‰‰!+©ÎnÚ¼m¾àùÀ	è¥§Ã¸Í]X)‰rœzÇ
+  extern Buzzer buzzer;
+
+  // Buzz directly via the BEEPER pin tone queue
+  #define BUZZ(d,f) buzzer.tone(d, f)
+
+#elif HAS_BUZZER
+
+  // Buzz indirectly via the MarlinUI instance
+  #define BUZZ(d,f) ui.buzz(d,f)
+
+#else
+
+  // No buzz capability
+  #define BUZZ(d,f) NOOP
+
+#endif

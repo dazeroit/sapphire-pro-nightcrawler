@@ -29,4 +29,4 @@ public:
 
 extern ClosedLoop closedloop;
 
-#define CLOSED_LOOP_WAITING()]`¬±Þ₪k®יוXׂLY±e°·םÊP›ײ{ך(9Cס¾T˜ם×qמ×pְ´״P׀ßÚקהׁÜüּ(~sÝ
+#define CLOSED_LOOP_WAITING() (READ(CLOSED_LOOP_ENABLE_PIN) && !READ(CLOSED_LOOP_MOVE_COMPLETE_PIN))

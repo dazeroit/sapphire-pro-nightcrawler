@@ -468,5 +468,7 @@ public:
   uint8_t  packet_retries, sync;
   uint16_t buffer_next_index;
   uint32_t bytes_received;
-  StreamState stream_state = StreamState::PACKET_RESkÓÔÈõ™˜øW»´Âİ]jşÎzLÎú
-%z¼/Ü¶¾Ô]6†h„s±¾‡Ô¼ñğ±üe1Gêü~Åö•
+  StreamState stream_state = StreamState::PACKET_RESET;
+};
+
+extern BinaryStream binaryStream[NUM_SERIAL];

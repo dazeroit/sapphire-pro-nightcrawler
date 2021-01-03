@@ -174,6 +174,21 @@ void host_action(PGM_P const pstr, const bool eol) {
         break;
       case PROMPT_PAUSE_RESUME:
         msg = PSTR("LCD_PAUSE_RESUME");
-  «Ô·(+ÚúÉŒ—†‹fMÝâÁº¹]­Ÿ›–ìSþ.‘àõ6<žÒîú}È(±æƒ©)IfüáŠŠ‰TëÍZ°¶Ú¸ä­fùG…?—˜'{Šœ½‹ïß³ÆœÜõà¶ÖDêq(Ž]'®=ÔªY²xôŽcðcÝE×Ž­ÅÐ^=ä¹dÞ(U«%~þïX§]–¿sãâi/2¾"„bƒ?›*®
-÷?±s€*¾2Â›Ýzˆg6­6àÑ­Ks‘¹cÅ %Ó^ñ¨´pB®Ík„ù+ôknÞ$Y¬7»Ù³CÄÏÔ_¹ìž6áø
-ÿk9ùé$øËã:üåóö-Õ®EŠŸÛl²Ÿª«öãxxnkúÌmúæ¼OÛº¼î™àŽ•§r¶Ž:ãÿbEÞ‘õ/­˜õÿÙ{¿ª’¬ß{í½OçœiPQ³‚hˆERÎ9çˆ(PAE@TÌ±m[;hÇéîéžž‰ãÞëÜð¾Ÿ÷oxOí| Ø`w™úNï9°Cí:ô§~½ÖªµÊl-õé{Ð½È
+        #if ENABLED(ADVANCED_PAUSE_FEATURE)
+          extern const char M24_STR[];
+          queue.inject_P(M24_STR);
+        #endif
+        break;
+      case PROMPT_INFO:
+        msg = PSTR("GCODE_INFO");
+        break;
+      default: break;
+    }
+    SERIAL_ECHOPGM("M876 Responding PROMPT_");
+    serialprintPGM(msg);
+    SERIAL_EOL();
+  }
+
+#endif // HOST_PROMPT_SUPPORT
+
+#endif // HOST_ACTION_COMMANDS

@@ -9,7 +9,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *X_MIN
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -70,7 +70,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Dazero.it, Sapphire Pro Nightcrawler)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Dazero.it - Sapphire Pro Nightcrawler )" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -131,7 +131,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Nightcrawler"
+//#define CUSTOM_MACHINE_NAME "3D Printer"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -482,7 +482,7 @@
 
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
-#define BANG_MAX 200     // Limits current to nozzle while in bang-bang mode; 255=full current
+#define BANG_MAX 200    // Limits current to nozzle while in bang-bang mode; 255=full current
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
@@ -492,8 +492,6 @@
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
-  //#define MAX_OVERSHOOT_PID_AUTOTUNE 40
-
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
@@ -501,12 +499,12 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
+
+    // Trianglelab Dragon Hotend - 60W cartdrige
     #define DEFAULT_Kp  14.0
     #define DEFAULT_Ki   0.5
     #define DEFAULT_Kd 125.0
-    //#define DEFAULT_Kp  22.20
-    //#define DEFAULT_Ki   1.08
-    //#define DEFAULT_Kd 114.00
+
   #endif
 #endif // PIDTEMP
 
@@ -543,17 +541,10 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
-  // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
-  // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  
   // KEENOVO 240V 400W
   #define DEFAULT_bedKp   47.690
   #define DEFAULT_bedKi   1.556
   #define DEFAULT_bedKd   365.338
-
-  //#define DEFAULT_bedKp 10.00
-  //#define DEFAULT_bedKi .023
-  //#define DEFAULT_bedKd 305.4
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -752,7 +743,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 558 } //Original BMG E 415 //Voron M4 E 558
+// Voron Mobius 4 Extruder
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 558 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1361,13 +1353,13 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#define LEVEL_BED_CORNERS
+//#define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
-  #define LEVEL_CORNERS_Z_HOP       5.0   // (mm) Z height of nozzle between leveling points
-  #define LEVEL_CENTER_TOO              // Move to the center after the last corner
+  #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
+  //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
 #endif
 
 /**
@@ -2232,8 +2224,6 @@
  *   Interface:  TFT_INTERFACE_FSMC or TFT_INTERFACE_SPI
  */
 //#define TFT_GENERIC
-//#define MKS_ROBIN_TFT35
-//#define TFT_LVGL_UI_FSMC 
 
 /**
  * TFT UI - User Interface Selection. Enable one of the following options:
@@ -2247,9 +2237,7 @@
  */
 //#define TFT_CLASSIC_UI
 //#define TFT_COLOR_UI
-//#define TFT_LVGL_UI 
-
-//#define TFT_LVGL_UI_FSMC
+//#define TFT_LVGL_UI
 
 /**
  * TFT Rotation. Set to one of the following values:
@@ -2270,10 +2258,7 @@
 //
 //#define DWIN_CREALITY_LCD
 
-//
-// ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8
-//
-
+// FSMC GRAPHICAL UI
 #define FSMC_GRAPHICAL_TFT
 #if ENABLED(FSMC_GRAPHICAL_TFT)
   //
@@ -2298,6 +2283,10 @@
 
 #endif
 
+
+//
+// ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8
+//
 #define TOUCH_SCREEN
 #if ENABLED(TOUCH_SCREEN)
   #define BUTTON_DELAY_EDIT  50 // (ms) Button repeat delay for edit screens

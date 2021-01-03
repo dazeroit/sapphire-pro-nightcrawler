@@ -51,4 +51,3 @@ const temp_entry_t temptable_66[] PROGMEM = {
   { OV(  1022),  25 },
   { OV(  1023),  20 }
 };
-

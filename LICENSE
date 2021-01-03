@@ -669,5 +669,8 @@ For more information on this, and how to apply and follow the GNU GPL, see
 <https://www.gnu.org/licenses/>.
 
   The GNU General Public License does not permit incorporating your program
-int³îœßn÷>w†6M÷i¦ýî«™¦Üuü Ï©ÿ­kÕ:ª­µåÇ³Y²eÖ]N›É;á,õËgÜ÷"¯tvÒtE/	QÓfÞ¬¶A+æDCþÿ¢‘»ùµ{}ÇnÖÛw³«\YŸF ®4{ÜËÕ¨ÑUþ’!1 R¿íò™:`Í2*ÒëT¸ˆ|=ƒl¤ËÂà5Ãv€kú3>§D,¥ÍÆùÿ&§†€ÉÁàŽQr9cŠ£³ôÊ{:y@¶!Sæ«¹ŠÛÈ\t)Åê‹àMuØZIÅIŠ=ÍÚoœ=ÞùÆÀ>0k‰z«ïyr½6•·½€À$!<T.+ZÚŠ˜ñR»
-ÛHiÃ$UŽvŒ÷±/—ü9þCýŽ¯LÑP=ÎÙôjmÿ©£†Ÿ°„¿q¥–*¯Dí=
+into proprietary programs.  If your program is a subroutine library, you
+may consider it more useful to permit linking proprietary applications with
+the library.  If this is what you want to do, use the GNU Lesser General
+Public License instead of this License.  But first, please read
+<https://www.gnu.org/licenses/why-not-lgpl.html>.

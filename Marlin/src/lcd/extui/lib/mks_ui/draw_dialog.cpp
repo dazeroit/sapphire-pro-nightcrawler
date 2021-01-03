@@ -234,8 +234,6 @@ static void btn_cancel_event_cb(lv_obj_t * btn, lv_event_t event) {
 
 void lv_draw_dialog(uint8_t type) {
 
-  SERIAL_ECHO_MSG("call lv draw dialog");
-
   lv_obj_t * btnOk = NULL;
   lv_obj_t * btnCancel = NULL;
   if (disp_state_stack._disp_state[disp_state_stack._disp_index] != DIALOG_UI) {
@@ -308,7 +306,7 @@ void lv_draw_dialog(uint8_t type) {
     lv_obj_t *labelOk = lv_label_create(btnOk, NULL);             // Add a label to the button
     lv_label_set_text(labelOk, print_file_dialog_menu.confirm);    // Set the labels text
   }
-  else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_PARKING // modded by dazero.it
+  else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_PAUSING
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_CHANGING
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_UNLOAD
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_LOAD
@@ -317,7 +315,6 @@ void lv_draw_dialog(uint8_t type) {
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_HEATING
   ) {
     // nothing to do
-    SERIAL_ECHO_MSG("dialog here nothing to do");
   }
   else if (uiCfg.dialogType == WIFI_ENABLE_TIPS) {
     btnCancel = lv_btn_create(scr, NULL);
@@ -454,7 +451,7 @@ void lv_draw_dialog(uint8_t type) {
     lv_label_set_text(labelDialog, print_file_dialog_menu.print_finish);
     lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
   }
-  else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_PARKING) { // modded by dazero.it
+  else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_PAUSING) {
     lv_label_set_text(labelDialog, pause_msg_menu.pausing);
     lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
   }

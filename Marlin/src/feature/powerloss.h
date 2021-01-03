@@ -198,4 +198,9 @@ class PrintJobRecovery {
     #endif
 
     #if PIN_EXISTS(POWER_LOSS)
-      friend class GcodeSuÈ÷`ˆŸ'Ü\œLÀû4e¸Ã¯ùXÓX”ïL¶Õ:Ü^šNıáÚ’ñ¦|íEÌI‘}9J ^NÎúm€5¿˜‡Ô[Ç¥'†›«Fö8!-z3ôœ8Ê
+      friend class GcodeSuite;
+      static void _outage();
+    #endif
+};
+
+extern PrintJobRecovery recovery;

@@ -241,6 +241,22 @@ const uint8_t segment_table[DirectStepping::Config::NUM_SEGMENTS][DirectStepping
     { 1, 1, 0, 1, 0, 1, 0 }, // 11 =  4
     { 1, 1, 1, 0, 1, 0, 1 }, // 12 =  5
     { 1, 1, 1, 0, 1, 1, 1 }, // 13 =  6
-    { 1, 1, 1, 1, ›è$ÔX~ú]µP]§_¤‘VÆòÆZ“¼»ªãôKÓÄ|íoÛ×„Œ³~í5y°,ÿ&ë1ö0ÖÎæ&BcÎh+è„q¡9è‡ïd¬+ÚÉ›mÏß_“ðp¸1\wa(Þ{>* ¿ÑýÊd¯ÛÍÕ?ëÿó¡ìãfÖð/ŸÃã>ízüé‡È„ý9"ewRú¸BïÿÊ¸ÇÚX÷ì¨·?åwãë¢.]ÁQqp@Áñl±Gä^‰Ã¿xà€ƒBü^Ü
-Çˆ‰‹c@ÉF +Ñçõ6)Ï×Vø1øÕø?ÍÇûñ0ÿ
-^7õîžCM	®Î&7ÁÂ(=¿ñ±ç©¢+¡ú"31¨°µóÃ{Òã{I5P³óßþ{hÊÿù
+    { 1, 1, 1, 1, 1, 1, 1 }, // 14 =  7
+    { 0 }
+
+  #elif STEPPER_PAGE_FORMAT == SP_4x2_256
+
+    { 0, 0, 0 }, // 0
+    { 0, 1, 0 }, // 1
+    { 1, 0, 1 }, // 2
+    { 1, 1, 1 }, // 3
+
+  #elif STEPPER_PAGE_FORMAT == SP_4x1_512
+
+    {0} // Uncompressed format, table not used
+
+  #endif
+
+};
+
+#endif // DIRECT_STEPPING

@@ -141,10 +141,10 @@ namespace Language_nl {
   PROGMEM Language_Str MSG_CONTROL_RETRACT_SWAP            = _UxGT("Ruil Retract mm");
   PROGMEM Language_Str MSG_CONTROL_RETRACTF                = _UxGT("Retract  F");
   PROGMEM Language_Str MSG_CONTROL_RETRACT_ZHOP            = _UxGT("Hop mm");
-  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER         = _UxGT("UnRet mm");
-  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER_SWAP    = _UxGT("Ruil UnRet mm");
-  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVERF        = _UxGT("UnRet  F");
-  PROGMEM Language_Str MSG_AUTORETRACT                     = _UxGT("AutoRetr.");
+  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER         = _UxGT("Unretr. mm");
+  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER_SWAP    = _UxGT("Ruil Unretr. mm");
+  PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVERF        = _UxGT("Unretr. FR");
+  PROGMEM Language_Str MSG_AUTORETRACT                     = _UxGT("Auto-Retract");
   PROGMEM Language_Str MSG_FILAMENTCHANGE                  = _UxGT("Verv. Filament");
   PROGMEM Language_Str MSG_FILAMENTCHANGE_E                = _UxGT("Verv. Filament *");
   PROGMEM Language_Str MSG_ATTACH_MEDIA                    = _UxGT("Init. SD kaart");
@@ -224,5 +224,8 @@ namespace Language_nl {
     PROGMEM Language_Str MSG_FILAMENT_CHANGE_UNLOAD        = _UxGT(MSG_2_LINE("Wacht voor", "uitladen..."));
     PROGMEM Language_Str MSG_FILAMENT_CHANGE_HEAT          = _UxGT(MSG_2_LINE("Klik knop om...", "verw. nozzle.")); //nozzle accepted English term
     PROGMEM Language_Str MSG_FILAMENT_CHANGE_HEATING       = _UxGT(MSG_1_LINE("Verwarmen..."));
-    PROGMEM Language_Str MSG_FILAMENT_CHANGE_INSERT        = _UxGT(MSG_2_LINE("Laad filÁ'³¶NXY¤Ôö,XSC¼~3Œ­”kÚÒƒ\ì²NU)¶Ø«3Š€ÿ‰Æ­i‰ûÓ‘¹t:ù;”’JŒópÆü^ÆîãÎzdßñ~˜Êª ëh(Œ[”$1GÔ0‹MÄ&@¼7##g˜àEãü+:•ŠÏ¼#÷kÚ…s†Ã+¾ÇŽbW®IO²SE—Ý
-Uágþû°9ngxÍ†-ô3|>×Ø8»DšÑ¶Íñdc¯¿úÿ‚Ä~ÀWXv\Åp+õJd†BµÄ&â{¯S©‘kðÂsyõCö¢Ýûú1 t’êq`v'­Âi¾j9>PMÇâb”kœ±>= ¥
+    PROGMEM Language_Str MSG_FILAMENT_CHANGE_INSERT        = _UxGT(MSG_2_LINE("Laad filament", "en druk knop"));
+    PROGMEM Language_Str MSG_FILAMENT_CHANGE_LOAD          = _UxGT(MSG_2_LINE("Wacht voor", "inladen..."));
+    PROGMEM Language_Str MSG_FILAMENT_CHANGE_RESUME        = _UxGT(MSG_2_LINE("Wacht voor", "printing..."));
+  #endif
+}

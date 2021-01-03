@@ -57,13 +57,12 @@
 
 #include "../lcd/ultralcd.h"
 
-//modded by dazero.it
-#if HAS_TFT_LVGL_UI
-  #include "../lcd/extui/lib/mks_ui/draw_pause_message.h"
-#endif
-
 #if HAS_BUZZER
   #include "../libs/buzzer.h"
+#endif
+
+#if ENABLED(POWER_LOSS_RECOVERY)
+  #include "powerloss.h"
 #endif
 
 #include "../libs/nozzle.h"
@@ -76,8 +75,7 @@
 
 static xyze_pos_t resume_position;
 
-//modded by dazero.it
-#if HAS_LCD_MENU || HAS_TFT_LVGL_UI
+#if HAS_LCD_MENU
   PauseMenuResponse pause_menu_response;
   PauseMode pause_mode = PAUSE_MODE_PAUSE_PRINT;
 #endif
@@ -139,9 +137,6 @@ static bool ensure_safe_temperature(const bool wait=true, const PauseMode mode=P
 
   #if HAS_LCD_MENU
     lcd_pause_show_message(PAUSE_MESSAGE_HEATING, mode);
-  //modded by dazero.it  
-  #elif HAS_TFT_LVGL_UI 
-    lv_draw_pause_message(PAUSE_MESSAGE_HEATING);
   #endif
   UNUSED(mode);
 
@@ -189,9 +184,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
   if (!ensure_safe_temperature(false, mode)) {
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_STATUS, mode);
-    //modded by dazero.it
-    #elif HAS_TFT_LVGL_UI
-      lv_draw_pause_message(PAUSE_MESSAGE_STATUS);
     #endif
     return false;
   }
@@ -199,9 +191,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
   if (pause_for_user) {
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_INSERT, mode);
-    //modded by dazero.it
-    #elif HAS_TFT_LVGL_UI
-      lv_draw_pause_message(PAUSE_MESSAGE_INSERT);
     #endif
     SERIAL_ECHO_MSG(_PMSG(STR_FILAMENT_CHANGE_INSERT));
 
@@ -227,9 +216,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
 
   #if HAS_LCD_MENU
     if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_LOAD, mode);
-  //modded by dazero.it
-  #elif HAS_TFT_LVGL_UI
-    lv_draw_pause_message(PAUSE_MESSAGE_LOAD);
   #endif
 
   #if ENABLED(DUAL_X_CARRIAGE)
@@ -266,9 +252,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
 
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_PURGE);
-    //modded by dazero.it
-    #elif HAS_TFT_LVGL_UI
-      lv_draw_pause_message(PAUSE_MESSAGE_PURGE);
     #endif
 
     TERN_(HOST_PROMPT_SUPPORT, host_prompt_do(PROMPT_USER_CONTINUE, PSTR("Filament Purging..."), CONTINUE_STR));
@@ -285,9 +268,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
         // "Wait for filament purge"
         #if HAS_LCD_MENU
           if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_PURGE);
-        //modded by dazero.it
-        #elif HAS_TFT_LVGL_UI
-          lv_draw_pause_message(PAUSE_MESSAGE_PURGE);
         #endif
 
         // Extrude filament to get into hotend
@@ -304,9 +284,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
           lcd_pause_show_message(PAUSE_MESSAGE_OPTION);
           while (pause_menu_response == PAUSE_RESPONSE_WAIT_FOR) idle_no_sleep();
         }
-      //modded by dazero.it
-      #elif HAS_TFT_LVGL_UI
-        lv_draw_pause_message(PAUSE_MESSAGE_OPTION);
       #endif
 
       // Keep looping if "Purge More" was selected
@@ -350,18 +327,12 @@ bool unload_filament(const float &unload_length, const bool show_lcd/*=false*/,
   if (!ensure_safe_temperature(false, mode)) {
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_STATUS);
-    //modded by dazero.it
-    #elif HAS_TFT_LVGL_UI
-      lv_draw_pause_message(PAUSE_MESSAGE_STATUS);
     #endif
     return false;
   }
 
   #if HAS_LCD_MENU
     if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_UNLOAD, mode);
-  //modded by dazero.it
-  #elif HAS_TFT_LVGL_UI
-    lv_draw_pause_message(PAUSE_MESSAGE_UNLOAD);
   #endif
 
   // Retract filament
@@ -500,8 +471,6 @@ void show_continue_prompt(const bool is_reload) {
   DEBUG_ECHOLNPAIR("... is_reload:", int(is_reload));
 
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(is_reload ? PAUSE_MESSAGE_INSERT : PAUSE_MESSAGE_WAITING));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI, lv_draw_pause_message(is_reload ? PAUSE_MESSAGE_INSERT : PAUSE_MESSAGE_WAITING));
   SERIAL_ECHO_START();
   serialprintPGM(is_reload ? PSTR(_PMSG(STR_FILAMENT_CHANGE_INSERT) "\n") : PSTR(_PMSG(STR_FILAMENT_CHANGE_WAIT) "\n"));
 }
@@ -544,8 +513,6 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
     // re-heat the nozzle, re-show the continue prompt, restart idle timers, start over
     if (nozzle_timed_out) {
       TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_HEAT));
-      // modded by dazero.it
-      TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_HEAT));
       SERIAL_ECHO_MSG(_PMSG(STR_FILAMENT_CHANGE_HEAT));
 
       TERN_(HOST_PROMPT_SUPPORT, host_prompt_do(PROMPT_USER_CONTINUE, GET_TEXT(MSG_HEATER_TIMEOUT), GET_TEXT(MSG_REHEAT)));
@@ -642,8 +609,6 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
   }
 
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_RESUME));
-  // modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_RESUME));
 
   // Check Temperature before moving hotend
   ensure_safe_temperature();
@@ -651,11 +616,13 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
   // Retract to prevent oozing
   unscaled_e_move(-(PAUSE_PARK_RETRACT_LENGTH), feedRate_t(PAUSE_PARK_RETRACT_FEEDRATE));
 
-  // Move XY to starting position, then Z
-  do_blocking_move_to_xy(resume_position, feedRate_t(NOZZLE_PARK_XY_FEEDRATE));
+  if (!axes_should_home()) {
+    // Move XY to starting position, then Z
+    do_blocking_move_to_xy(resume_position, feedRate_t(NOZZLE_PARK_XY_FEEDRATE));
 
-  // Move Z_AXIS to saved position
-  do_blocking_move_to_z(resume_position.z, feedRate_t(NOZZLE_PARK_Z_FEEDRATE));
+    // Move Z_AXIS to saved position
+    do_blocking_move_to_z(resume_position.z, feedRate_t(NOZZLE_PARK_Z_FEEDRATE));
+  }
 
   // Unretract
   unscaled_e_move(PAUSE_PARK_RETRACT_LENGTH, feedRate_t(PAUSE_PARK_RETRACT_FEEDRATE));
@@ -677,9 +644,10 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
   // Set extruder to saved position
   planner.set_e_position_mm((destination.e = current_position.e = resume_position.e));
 
+  // Write PLR now to update the z axis value
+  TERN_(POWER_LOSS_RECOVERY, if (recovery.enabled) recovery.save(true));
+
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_STATUS));
-  // modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_STATUS));
 
   #ifdef ACTION_ON_RESUMED
     host_action_resumed();

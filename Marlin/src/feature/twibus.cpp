@@ -172,4 +172,9 @@ void TWIBus::flush() {
     if (DEBUGGING(INFO)) { prefix(func); SERIAL_ECHOLN(c); }
   }
   void TWIBus::debug(const char func[], char str[]) {
-    if (DEBUGGING(INFO)) { prefix¯)uÕ¯(3g2ß1zC1Gâ6ªR|·`mD⁄]ﬁ®6r‰ê=S	á∆∂yJ∂»hëÒûSü•C”Ÿ'›+≠ENb~ÁyÇèeÌ•q
+    if (DEBUGGING(INFO)) { prefix(func); SERIAL_ECHOLN(str); }
+  }
+
+#endif
+
+#endif // EXPERIMENTAL_I2CBUS

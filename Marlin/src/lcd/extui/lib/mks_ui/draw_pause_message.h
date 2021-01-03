@@ -25,8 +25,6 @@
   extern "C" { /* C-declarations for C++ */
 #endif
 
-#include "../../../../feature/pause.h"
-
 extern void lv_draw_pause_message(const PauseMessage msg);
 
 //extern void disp_temp_ready_print();

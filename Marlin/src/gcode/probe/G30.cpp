@@ -60,4 +60,7 @@ void GcodeSuite::G30() {
   if (raise_after == PROBE_PT_STOW)
     probe.move_z_after_probing();
 
-  report_cuÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+  report_current_position();
+}
+
+#endif // HAS_BED_PROBE

@@ -231,4 +231,6 @@ namespace Language_test {
     PROGMEM Language_Str MSG_MAX                             = STRG_OKTAL_c;
     PROGMEM Language_Str MSG_FACTOR                          = STRG_OKTAL_d;
     PROGMEM Language_Str MSG_PID_P                           = STRG_OKTAL_e;
-    PROGMEM Languageÿÿÿýÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ¿ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ÷ÿÿïÿ
+    PROGMEM Language_Str MSG_PID_I                           = STRG_OKTAL_f;
+  #endif
+}

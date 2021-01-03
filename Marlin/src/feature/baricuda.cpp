@@ -29,5 +29,4 @@
 uint8_t baricuda_valve_pressure = 0,
         baricuda_e_to_p_pressure = 0;
 
-#e:Ô`ÉŸ¦GßÐ~#Ô
-Í,6
+#endif // BARICUDA

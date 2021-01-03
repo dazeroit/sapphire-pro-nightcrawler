@@ -100,6 +100,23 @@ class Stopwatch {
     FORCE_INLINE static bool isPaused() { return state == PAUSED; }
 
     /**
-     * @briu™
-X[¨›×¼Xa‹ïZ¥úÄg¥‰~P–ÈÍ‰ö&KÔÔí*Kî«NQè«J–ï©J’C¥ÁúT
-›¥)áøº;*Fccck/‹&ºŒCÃ˜VàÙc¬ùÈG?ÆcÒ#]!rÃzˆÚ¸¶lğ€`7Øhg.ff°öĞlğÁFOôÕÔÁl•6˜éhª¼(JHÍK€p©qèká¥s8àëeÑ¼‡æÄPçõCH.zÕhr	gÇÌX–º¯äIŞ8>÷vÕ§ş[cˆğ³$šÌxÌ˜?P•¹‰h[µT[qú[é¹»V<G÷úÈŸ=¨rñÌfí;“[Œï\6x;ÎæÑ½³Ùû‰s’œçf’]ŸÍ¥z¾~áûö]æ¦/Jò~ù±¬ü÷ß*›şö{UÇßÿZÕıï­øÏÔíüÏ¿7ÂuÔÎ.¸ï?”Wà{ïœß>4µ±­5Ï®SıÉÇæşVì'Q×ÌÄh“+j›¨±Bíâ¾Šl¥¦ÜDj©Æ‡rr#9I›"¨ó¸	¶xPç"‚]¼a¼µ38›Û¾%X©™ƒù*s ÔĞ]ÕÕ ­´jrj $­¾!°®-[Q^Û·ÚHq\”6°
+     * @brief Get the running time
+     * @details Return the total number of seconds the timer has been running.
+     * @return the delta since starting the stopwatch
+     */
+    static millis_t duration();
+
+    #ifdef DEBUG_STOPWATCH
+
+      /**
+       * @brief Print a debug message
+       * @details Print a simple debug message "Stopwatch::function"
+       */
+      static void debug(const char func[]);
+
+    #else
+
+      static inline void debug(const char[]) {}
+
+    #endif
+};

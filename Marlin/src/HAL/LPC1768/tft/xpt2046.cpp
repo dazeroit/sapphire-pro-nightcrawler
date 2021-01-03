@@ -111,4 +111,18 @@ extern uint8_t spiTransfer(uint8_t b);
   }
 #endif
 
-uint16_t XPT2046::SoftwareIO(uint16_ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+uint16_t XPT2046::SoftwareIO(uint16_t data) {
+  uint16_t result = 0;
+
+  for (uint8_t j = 0x80; j; j >>= 1) {
+    WRITE(TOUCH_SCK_PIN, LOW);
+    WRITE(TOUCH_MOSI_PIN, data & j ? HIGH : LOW);
+    if (READ(TOUCH_MISO_PIN)) result |= j;
+    WRITE(TOUCH_SCK_PIN, HIGH);
+  }
+  WRITE(TOUCH_SCK_PIN, LOW);
+
+  return result;
+}
+
+#endif // HAS_TFT_XPT2046

@@ -127,4 +127,7 @@ namespace DirectStepping {
 typedef typename DirectStepping::Config::page_idx_t page_idx_t;
 
 // TODO: use config
-typedef DirectStepping::pageÞ]ßüirh!y¯ÿ­PŸÉw¯XßcÞËÒ\»mÈ+Jõ¢%pWÂ˜-_gjýs]|>¾±ùêÎ¥÷¼¬¸Œ-ïåöÆ>:â¢Î%‡(ëžÛmùâVâhæ ü	“kAMq÷†àÕEº,!^Ú-/Mµ<«êßo˜ŽsÎþ“{óþâã»àJñH¢¿‘j}+·<FYñajå¥£ê^Bƒsçžs€3È¨¦T.óîœÌÿJ}#tŽ¶~¥$~Žî
+typedef DirectStepping::page_step_state_t page_step_state_t;
+
+extern const uint8_t segment_table[DirectStepping::Config::NUM_SEGMENTS][DirectStepping::Config::SEGMENT_STEPS];
+extern DirectStepping::PageManager page_manager;

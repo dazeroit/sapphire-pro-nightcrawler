@@ -67,5 +67,14 @@ void host_action(PGM_P const pstr, const bool eol=true);
   void host_action_notify(const char * const message);
   void host_action_notify_P(PGM_P const message);
   void host_action_prompt_begin(const PromptReason reason, PGM_P const pstr, const char extra_char='\0');
-  K¡.ÀòpñûÖh‘+©œ{h‘ÃyÀy´Wæqó­Úá±}áÃ›•¾#ğ«Œ¥	+:Œ>&S¹2w<¥=G9}ÔãÒÌcâ@İµÊùTÃá~Y<,5ÊÕÊÎË{ï Ú	1Æ}¸	Ç&rİ¡æö$ıé¨f´ï_ŠÕ}Ïó©òæš—ªV¹pLºâRj
-ô\19Ä<ÚÖÀ	³hø7cÀ¾1¼ì“ã5¾–+ß,^ÕÂµÜ·ƒ9§7;Fô¨cËãÎaMe–9|Íïœz\8ÖtÒU{Bã‡“Ç9nd¢ù÷ˆæ)ø/8ÆClæ¦8hYÛ´„•ãzl•sÔ|Ô4q–ıış`î<¯ñú°åÏéÀ;S»#ı±áÅ†Z<zYô¿_ïß­•şÍX|ª§û.ê”S¾Áád|¹FrÅúH+/á²†'¼îO8§™Wznan‡­n^uİõs•ÂBÓ¶/¼nÍw.¾ëõéîqø÷¾;^¿d[ûı¨­mı½wı™ºµwıùú5wşÙx¹ğz¹_ö¾ú]y}ôİïiğùÊU>y	¬üKç•#mwíØó{÷=¯¹=ø¹Å°k®c·¿Åë^½W²Ã­í{5°èPP×°i=õ¹Cûş½›Ö·BÛŞ/æÚ÷~ñ¦{]]Tëh
+  void host_action_prompt_button(PGM_P const pstr);
+  void host_action_prompt_end();
+  void host_action_prompt_show();
+  void host_prompt_do(const PromptReason reason, PGM_P const pstr, PGM_P const btn1=nullptr, PGM_P const btn2=nullptr);
+  inline void host_prompt_open(const PromptReason reason, PGM_P const pstr, PGM_P const btn1=nullptr, PGM_P const btn2=nullptr) {
+    if (host_prompt_reason == PROMPT_NOT_DEFINED) host_prompt_do(reason, pstr, btn1, btn2);
+  }
+
+  void filament_load_host_prompt();
+
+#endif

@@ -67,4 +67,14 @@ private:
   #if ENABLED(TOUCH_BUTTONS_HW_SPI)
     static uint16_t HardwareIO(uint16_t data);
   #endif
-  statÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿÿÿïÿÿÿûÿÿÿýÿ÷ÿÿÿÿþÿÿÿÿßÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿýÿÿÿûÿÿÿ¿ÿÿÿ¿ÿÿÿÿÿÿÿÿÿÿþÿÿßÿÿÿÿ÷ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+  static uint16_t SoftwareIO(uint16_t data);
+  static uint16_t IO(uint16_t data = 0);
+
+public:
+  #if ENABLED(TOUCH_BUTTONS_HW_SPI)
+    static SPIClass SPIx;
+  #endif
+
+  static void Init();
+  static bool getRawPoint(int16_t *x, int16_t *y);
+};

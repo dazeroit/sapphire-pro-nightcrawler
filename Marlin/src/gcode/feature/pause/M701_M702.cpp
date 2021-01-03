@@ -38,11 +38,6 @@
   #include "../../../lcd/ultralcd.h"
 #endif
 
-//modded by dazero.it
-#if HAS_TFT_LVGL_UI
-  #include "../../../lcd/extui/lib/mks_ui/draw_pause_message.h"
-#endif
-
 #if ENABLED(PRUSA_MMU2)
   #include "../../../feature/mmu2/mmu2.h"
 #endif
@@ -90,8 +85,6 @@ void GcodeSuite::M701() {
 
   // Show initial "wait for load" message
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_LOAD, PAUSE_MODE_LOAD_FILAMENT, target_extruder));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_LOAD));
 
   #if HAS_MULTI_EXTRUDER && DISABLED(PRUSA_MMU2)
     // Change toolhead if specified
@@ -138,8 +131,6 @@ void GcodeSuite::M701() {
 
   // Show status screen
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_STATUS));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_STATUS));
 }
 
 /**
@@ -194,8 +185,6 @@ void GcodeSuite::M702() {
 
   // Show initial "wait for unload" message
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_UNLOAD, PAUSE_MODE_UNLOAD_FILAMENT, target_extruder));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_UNLOAD));
 
   #if HAS_MULTI_EXTRUDER && DISABLED(PRUSA_MMU2)
     // Change toolhead if specified
@@ -248,8 +237,6 @@ void GcodeSuite::M702() {
 
   // Show status screen
   TERN_(HAS_LCD_MENU, lcd_pause_show_message(PAUSE_MESSAGE_STATUS));
-  //modded by dazero.it
-  TERN_(HAS_TFT_LVGL_UI,lv_draw_pause_message(PAUSE_MESSAGE_STATUS));
 }
 
 #endif // ADVANCED_PAUSE_FEATURE

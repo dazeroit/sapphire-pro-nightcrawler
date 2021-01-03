@@ -78,5 +78,6 @@ typedef const char Language_Str[];
 
 #define GET_LANGUAGE_NAME(INDEX) GET_LANG(LCD_LANGUAGE_##INDEX)::LANGUAGE
 
-#define MSG_1_LINE(A)     A "\0"   " AÇâﬂ~ÅøèGwÅàÈJ	Ù¶)JKtu_ÑÈY†£§ûˆ∂{Ó•(nR†2)A¨$.R07<òô ¸}ƒi'ˆ˜ñp‹¸ ÿÎÉôû>†ÜZ
-l
+#define MSG_1_LINE(A)     A "\0"   "\0"
+#define MSG_2_LINE(A,B)   A "\0" B "\0"
+#define MSG_3_LINE(A,B,C) A "\0" B "\0" C

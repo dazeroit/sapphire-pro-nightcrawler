@@ -381,4 +381,23 @@ bool SdVolume::init(Sd2Card* dev, uint8_t part) {
                 fbs->totalSectors16 : fbs->totalSectors32;
 
   // total data blocks
-  clusterCount_ = totalBlocks - (dataStartBlock_ - volu×>w8ÓhéXùò\®åÅÙ<«g]ï\*¸w¹b7òƒkUQÏï×f¿}ÔTûz­oâõİ}Èoî÷í}³6täİ£¡…¯óß­óN¿[^|÷hpçá×÷§Ès‰ï¼ºß7òònïà}BîÅ|ˆïî\ê,Z]î.ÂùË'êü1ÿ©¶§§+íĞgşà`®:æÇl+bUfĞ<¡$.‘–ñ¾şæê1Ş~àgï^Ö¶àhbÆZ`¬©	†ê G`VEP’–Y	IâŠmVóë¼³…¶+ÑÿÓö(Q»ÖÖ„[}l7kSkèØ§N¤bzÿQ}ƒê7ü‘vĞ7Öpœ'Hûª8Œ…R”cš20¾ÃÄˆ–f\°4ççíôqU† 5Øí«‘ºd‰afcEI.P‘åI«/ğ£·ã˜ª`c-ÂúTI´=“Lì“ÇjÓ$Q¯<Ú’!KÙ¦ñ3Çs0']OU"§1/†yg*2‚‰÷é¤¯RŒ¿=1®lÁÇY
+  clusterCount_ = totalBlocks - (dataStartBlock_ - volumeStartBlock);
+
+  // divide by cluster size to get cluster count
+  clusterCount_ >>= clusterSizeShift_;
+
+  // FAT type is determined by cluster count
+  if (clusterCount_ < 4085) {
+    fatType_ = 12;
+    if (!FAT12_SUPPORT) return false;
+  }
+  else if (clusterCount_ < 65525)
+    fatType_ = 16;
+  else {
+    rootDirStart_ = fbs->fat32RootCluster;
+    fatType_ = 32;
+  }
+  return true;
+}
+
+#endif // SDSUPPORT

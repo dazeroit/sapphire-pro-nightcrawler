@@ -58,5 +58,10 @@ void Babystep::add_steps(const AxisEnum axis, const int16_t distance) {
   if (DISABLED(BABYSTEP_WITHOUT_HOMING) && axes_should_home(_BV(axis))) return;
 
   accum += distance; // Count up babysteps for the UI
-  stepò£6vüÖü}Hàeq€cÒû9`•‘ÆJÃ†¨ŠmA¿Žù;Ä>!À9ÃÍQ)Ñ¡V;²ÕÿúBß²å¾fžŠ"nl$Û›@º¹ ¹M é)½à²ÐcúS1–)ýØ:|Äð°I”–?’ïŒ6VKB3¼ß\üú¾]a¼žj˜oÿ™£Q	á›àÜX“OÞží0Ò°Ÿç‹‡ÿã§>ÿçßOüëÆ—^¯ÜüŸÿ<ûqÓ±híJcÓ¢6ð«ÔKsŒ?1Ë~e~t}¥Æîæ¯ÚÅ³¯(‰+hYéZÀÚ¶@wøì½KÛ‘¡Áü{èûf©º|¾^å0TCä
-è_§çK¢µâãÅçw”åðü1É1A[ô
+  steps[BS_AXIS_IND(axis)] += distance;
+  TERN_(BABYSTEP_DISPLAY_TOTAL, axis_total[BS_TOTAL_IND(axis)] += distance);
+  TERN_(BABYSTEP_ALWAYS_AVAILABLE, gcode.reset_stepper_timeout());
+  TERN_(INTEGRATED_BABYSTEPPING, if (has_steps()) stepper.initiateBabystepping());
+}
+
+#endif // BABYSTEPPING

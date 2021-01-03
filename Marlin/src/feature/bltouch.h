@@ -107,6 +107,10 @@ private:
 
   static void clear();
   static bool command(const BLTCommand cmd, const millis_t &ms);
-  st€u0˜¿aﬂØöüR◊Å#˘πÄuWyôÎt›#‰?Ó˙Eˆ˙{wºØ|≈€¡¨ü¨,ìDù 9ÀJ¶Ô˚˝|Ì∞|qîÊf√hgÉœÃ`G(˛Ì≠)ï
-wnÖiK=[vÖós=:™vïË·∑ÿ≥WπÆÂ¨=Ù‹°ˆ⁄ﬂ_Ñ¥‰0»€í
-g˚è¯›ø÷øˆ◊ü∆Jü›>±ÎÍXsd
+  static bool deploy_proc();
+  static bool stow_proc();
+  static bool status_proc();
+  static void mode_conv_proc(const bool M5V);
+};
+
+extern BLTouch bltouch;

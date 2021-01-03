@@ -112,4 +112,18 @@ void NotifyFailSetConfDescr(uint8_t reason) {
 }
 
 void NotifyFailUnknownDevice(uint16_t VID, uint16_t PID) {
-        Notify(PSTR("\r\nUnknown Dÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+        Notify(PSTR("\r\nUnknown Device Connected - VID: "), 0x80);
+        D_PrintHex<uint16_t > (VID, 0x80);
+        Notify(PSTR(" PID: "), 0x80);
+        D_PrintHex<uint16_t > (PID, 0x80);
+}
+
+void NotifyFail(uint8_t rcode) {
+        D_PrintHex<uint8_t > (rcode, 0x80);
+        Notify(PSTR("\r\n"), 0x80);
+}
+#endif
+
+#else
+#error "Never include UHS_util_INLINE.h, include UHS_host.h instead"
+#endif

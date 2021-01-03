@@ -59,8 +59,7 @@ enum PauseMessage : char {
   PAUSE_MESSAGE_HEATING
 };
 
-//modded by dazero.it
-#if HAS_LCD_MENU || HAS_TFT_LVGL_UI
+#if HAS_LCD_MENU
   enum PauseMenuResponse : char {
     PAUSE_RESPONSE_WAIT_FOR,
     PAUSE_RESPONSE_EXTRUDE_MORE,
@@ -95,4 +94,10 @@ void resume_print(const float &slow_load_length=0, const float &fast_load_length
 bool load_filament(const float &slow_load_length=0, const float &fast_load_length=0, const float &extrude_length=0, const int8_t max_beep_count=0, const bool show_lcd=false,
                           const bool pause_for_user=false, const PauseMode mode=PAUSE_MODE_PAUSE_PRINT DXC_PARAMS);
 
-bool unload_˜øzùÈ+?WÔß~Ëg[j¼1éàA2î[á(¹»ZQEØûf·g3]è|¦·|v¬Ÿlz”·ŒŸÍdzî¾4u·¿Ö(+È¢`g;BPÏ­±û7}mµ•ì­Š²ø÷…·B	HYNÏ;çÇ*&mi,LÒy{x‡2<¡…nò¯ïì/ïHtƒw1ş^U'­¿^ğ÷º4%i@ã’ÚŸĞï«¨½6Í<ás”lM$Äö¹…Ñì¢P7Ägzáş¡EõAî; ôùß¾öÈ£4ú,v®-æ+è±‚şª‹gvâ{¿‹Ñiô¨šs)ÚË„
+bool unload_filament(const float &unload_length, const bool show_lcd=false, const PauseMode mode=PAUSE_MODE_PAUSE_PRINT
+  #if BOTH(FILAMENT_UNLOAD_ALL_EXTRUDERS, MIXING_EXTRUDER)
+    , const float &mix_multiplier=1.0
+  #endif
+);
+
+#endif // ADVANCED_PAUSE_FEATURE

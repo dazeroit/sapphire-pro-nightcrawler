@@ -303,7 +303,7 @@
 #define LCD_STR_C STR_C
 #define LCD_STR_E STR_E
 
-#if HAS_MARLINUI_HD44780
+#if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
 
   // Custom characters defined in the first 8 characters of the LCD
   #define LCD_STR_BEDTEMP     "\x00" // Print only as a char. This will have 'unexpected' results when used in a string!
@@ -387,5 +387,16 @@
 #include LANGUAGE_INCL(LCD_LANGUAGE_2)
 #include LANGUAGE_INCL(LCD_LANGUAGE_3)
 #include LANGUAGE_INCL(LCD_LANGUAGE_4)
-#include LANGUAGE_INCL(LCD_	4ë+³}xÍ%ë…Ð5F|_´ÆÙéVWOä»^?]¸Úˆy@‹æÙLCth^>ljFMú‡/æšŸÍ4V>¹ßH
-­šãµ©ðF‡&èSu›Ñ¿>0ÈÉ•%vû›rŒ†ëSÔQ›Â¹Üœ%S•¹™r¨S#<è~ÎAÿ[°ÏJâçfI<Lˆqr\¥M1úäôd™žŽ,ÑÐb0ƒ58I}llÁƒZ/™,çXÇÎwÜ–ÅüŽèJ3Mêå‡8Ý×ÅšòÎƒ×zQî9jzà›£·ž	ÐJç°1?N£¥(Q®«<M¥›‰ó;#R”:JS•ðØ[×^†¢Øo…ªT.èr–$Ëc›Ö‚<¥ºŒÙêÔ4QyR‚0wûv^fD/5<ŒD¯"þd«¿?	õö"A®Ì¹kG\WÚ0XÝ‚Ø™›cmC:5‰ž†ƒ5à? Á™#Üu]º7"x[¡x(Ï)Cû»ŽÏ“¥ƒ'Ì×l>Ÿ­ù þç/è³gÖñÈÂuóCÈrwøq ¹ÏæS>2çÏJˆôzžøóI'©ù@|L¸ÚZ‚Ž’5og{ò[^¦m ©ÍÄi2¤$>Iøúa
+#include LANGUAGE_INCL(LCD_LANGUAGE_5)
+
+#if NONE(DISPLAY_CHARSET_ISO10646_1, \
+         DISPLAY_CHARSET_ISO10646_5, \
+         DISPLAY_CHARSET_ISO10646_KANA, \
+         DISPLAY_CHARSET_ISO10646_GREEK, \
+         DISPLAY_CHARSET_ISO10646_CN, \
+         DISPLAY_CHARSET_ISO10646_TR, \
+         DISPLAY_CHARSET_ISO10646_PL, \
+         DISPLAY_CHARSET_ISO10646_CZ, \
+         DISPLAY_CHARSET_ISO10646_SK)
+  #define DISPLAY_CHARSET_ISO10646_1 // use the better font on full graphic displays.
+#endif

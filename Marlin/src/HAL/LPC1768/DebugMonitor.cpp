@@ -306,4 +306,17 @@ __attribute__((naked)) void WDT_IRQHandler() {
   );
 }
 
-__attribute__((nakÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+__attribute__((naked)) void RSTC_Handler() {
+  __asm__ __volatile__ (
+    ".syntax unified" "\n\t"
+    A("tst lr, #4")
+    A("ite eq")
+    A("mrseq r0, msp")
+    A("mrsne r0, psp")
+    A("mov r1,lr")
+    A("mov r2,#7")
+    A("b HardFault_HandlerC")
+  );
+}
+}
+#endif // TARGET_LPC1768
