@@ -70,7 +70,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Dazero.it, Sapphire Pro Nightcrawler)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "[Dazero.it - Saphhire PRO Nightcrawler]" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -545,7 +545,7 @@
   //#define PID_DEBUG             // Sends debug data to the serial port. Use 'M303 D' to toggle activation.
   //#define PID_OPENLOOP          // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
-  #define PID_FUNCTIONAL_RANGE 40 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 #endif
 
@@ -755,7 +755,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 1500 }
+#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 1800 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -771,7 +771,7 @@
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1500    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  1800    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -1004,7 +1004,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
 /**
@@ -1806,7 +1806,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
@@ -2225,28 +2225,7 @@
 // Upscaled 128x64 Marlin UI
 //
 #define FSMC_GRAPHICAL_TFT
-#if ENABLED(FSMC_GRAPHICAL_TFT)
-  //
-  // GRAPHICAL_TFT_UPSCALE 2 2x upscaler for 320x240 displays (default)
-  // GRAPHICAL_TFT_UPSCALE 3 3x upscaler for 480x320 displays
-  //
-  #define GRAPHICAL_TFT_UPSCALE 3
 
-  //
-  // Change colors
-  // some colors are predefined, see /src/lcd/dogm/u8g_dev_tft_480~.cpp Line 160
-  // or use 16bit color (e.g. 0x0000 = black, 0xFFE0 = yellow)
-  // see https://ee-programming-notepad.blogspot.com/2016/10/16-bit-color-generator-picker.html
-  //
-
-  #define TFT_MARLINUI_COLOR 0xFFFF // main foreground color
-  #define TFT_MARLINBG_COLOR 0x0000 // background color
-  #define TFT_BTCANCEL_COLOR 0xF800 // cancel button
-  #define TFT_BTARROWS_COLOR 0xFFFF // arrows up/down
-  #define TFT_BTOKMENU_COLOR 0x23DF // enter button
-  //#define TFT_DISABLED_COLOR COLOR_DARK // currently not used
-
-#endif
 //
 // TFT LVGL UI
 //
@@ -2276,10 +2255,10 @@
 
   #define TOUCH_SCREEN_CALIBRATION
 
-  #define XPT2046_X_CALIBRATION 12013
-  #define XPT2046_Y_CALIBRATION -8711
-  #define XPT2046_X_OFFSET        -32
-  #define XPT2046_Y_OFFSET        256
+  //#define XPT2046_X_CALIBRATION 12316
+  //#define XPT2046_Y_CALIBRATION -8981
+  //#define XPT2046_X_OFFSET        -43
+  //#define XPT2046_Y_OFFSET        257
 #endif
 
 //
@@ -2297,7 +2276,7 @@
 
 // Set number of user-controlled fans. Disable to use all board-defined fans.
 // :[1,2,3,4,5,6,7,8]
-#define NUM_M106_FANS 1
+//#define NUM_M106_FANS 1
 
 // Increase the FAN PWM frequency. Removes the PWM noise but increases heating in the FET/Arduino
 //#define FAST_PWM_FAN
